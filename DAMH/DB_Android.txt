@@ -1,0 +1,162 @@
+CREATE TABLE tbl_Permission (
+	ID int AUTO_INCREMENT,
+	Name varchar(255) UNIQUE,
+	CONSTRAINT PK_Permission PRIMARY KEY(ID)
+);
+
+CREATE TABLE tbl_GroupPermission (
+	ID int AUTO_INCREMENT,
+   	Name varchar(255) UNIQUE,
+    	CONSTRAINT PK_GP PRIMARY KEY(ID)
+);
+
+CREATE TABLE tbl_Decentralization (
+	IDGroupPermission int,
+    	IDPermission int,
+    	CONSTRAINT PK_Decentralization PRIMARY KEY(IDGroupPermission, IDPermission),
+    	CONSTRAINT FK_Dec_GP FOREIGN KEY(IDGroupPermission) REFERENCES tbl_GroupPermission(ID),
+    	CONSTRAINT FK_Dec_Permission FOREIGN KEY(IDPermission) REFERENCES tbl_Permission(ID)
+);
+
+CREATE TABLE tbl_Account (
+	Username varchar(255),
+    Passwrod varchar(255),
+    IDGroupPermission int,
+    CONSTRAINT PK_Account PRIMARY KEY(Username),
+    CONSTRAINT FK_Account_GP FOREIGN KEY(IDGroupPermission) REFERENCES tbl_GroupPermission(ID)
+);
+
+CREATE TABLE tbl_Employee (
+	ID int AUTO_INCREMENT,
+    Name varchar(1000) NOT NULL,
+    DateOfBirth date,
+    Gender varchar(3),
+    Address varchar(1500),
+    PhoneNum varchar(11) UNIQUE,
+    IdentityCard varchar(12) UNIQUE,
+    Image varchar(1500),
+    Username varchar(255),
+    CONSTRAINT PK_Employee PRIMARY KEY(ID),
+    CONSTRAINT FK_Employee_Account FOREIGN KEY(Username) REFERENCES tbl_Account(Username)
+);
+
+CREATE TABLE tbl_Customer (
+	ID int AUTO_INCREMENT,
+    Name varchar(1000) NOT NULL,
+    Gender varchar(3),
+    PhoneNum varchar(11) UNIQUE,
+    Image varchar(1500),
+    Username varchar(255),
+    CONSTRAINT PK_Customer PRIMARY KEY(ID),
+    CONSTRAINT FK_Customer_Account FOREIGN KEY(Username) REFERENCES tbl_Account(Username)
+);
+
+CREATE TABLE tbl_Category (
+	ID varchar(20),
+    Name varchar(255) UNIQUE,
+    Image varchar(1500),
+    CONSTRAINT PK_Category PRIMARY KEY(ID)
+);
+
+CREATE TABLE tbl_Artist (
+	ID varchar(20),
+    Name varchar(255) UNIQUE,
+    Image varchar(1500),
+    CONSTRAINT PK_Artist PRIMARY KEY(ID)
+);
+
+CREATE TABLE tbl_Song (
+	ID varchar(20),
+    Name varchar(1500) UNIQUE,
+    Image varchar(1500),
+    QuantityFavorite double,
+    Category varchar(20),
+    CONSTRAINT PK_Song PRIMARY KEY(ID),
+    CONSTRAINT FK_Song_Category FOREIGN KEY(Category) REFERENCES tbl_Category(ID)
+);
+
+CREATE TABLE tbl_SongOfArtist (
+	IDSong varchar(20),
+    IDArtist varchar(20),
+    CONSTRAINT PK_SongOfArtist PRIMARY KEY(IDSong, IDArtist),
+    CONSTRAINT FK_SOA_Song FOREIGN KEY(IDSong) REFERENCES tbl_Song(ID),
+    CONSTRAINT FK_SOA_Artist FOREIGN KEY(IDArtist) REFERENCES tbl_Artist(ID)
+);
+
+CREATE TABLE tbl_CusFavoriteSong (
+	IDSong varchar(20),
+    IDCustomer int,
+    CONSTRAINT PK_CusFavoriteSong PRIMARY KEY(IDSong, IDCustomer),
+    CONSTRAINT FK_CFS_Song FOREIGN KEY(IDSong) REFERENCES tbl_Song(ID),
+    CONSTRAINT FK_CFS_Customer FOREIGN KEY(IDCustomer) REFERENCES tbl_Customer(ID)
+);
+
+CREATE TABLE tbl_CusLibrary (
+	IDSong varchar(20),
+    IDCustomer int,
+    CONSTRAINT PK_CusLibrary PRIMARY KEY(IDSong, IDCustomer),
+    CONSTRAINT FK_CL_Song FOREIGN KEY(IDSong) REFERENCES tbl_Song(ID),
+    CONSTRAINT FK_CL_Customer FOREIGN KEY(IDCustomer) REFERENCES tbl_Customer(ID)
+);
+
+CREATE TABLE tbl_HistoryPlaySong (
+	IDSong varchar(20),
+    IDCustomer int,
+    DateListen date,
+    CONSTRAINT PK_HistoryPlaySong PRIMARY KEY(IDSong, IDCustomer),
+    CONSTRAINT FK_HPS_Song FOREIGN KEY(IDSong) REFERENCES tbl_Song(ID),
+    CONSTRAINT FK_HPS_Customer FOREIGN KEY(IDCustomer) REFERENCES tbl_Customer(ID)
+);
+
+CREATE TABLE tbl_Singer (
+	ID varchar(20),
+    Name varchar(255) UNIQUE,
+    Image varchar(1500),
+    CONSTRAINT PK_Singer PRIMARY KEY(ID)
+);
+
+CREATE TABLE tbl_Album (
+	IDSong varchar(20),
+    IDSinger varchar(20),
+    QuantityFavorite double,
+    Image varchar(1500),
+    CONSTRAINT PK_Album PRIMARY KEY(IDSong, IDSinger),
+    CONSTRAINT FK_Album_Song FOREIGN KEY(IDSong) REFERENCES tbl_Song(ID),
+    CONSTRAINT FK_Album_Singer FOREIGN KEY(IDSinger) REFERENCES tbl_Singer(ID)
+);
+
+CREATE TABLE tbl_PlayList (
+	ID varchar(20),
+    Name varchar(1500) UNIQUE,
+    Image varchar(1500),
+    QuantityFavorite double,
+    CONSTRAINT PK_PlayList PRIMARY KEY(ID)
+);
+
+CREATE TABLE tbl_SongOfPlayList (
+	IDSong varchar(20),
+    IDPlayList varchar(20),
+    CONSTRAINT PK_SongOfPlayList PRIMARY KEY(IDSong, IDPlayList),
+    CONSTRAINT FK_SOPL_Song FOREIGN KEY(IDSong) REFERENCES tbl_Song(ID),
+    CONSTRAINT FK_SOPL_PlayList FOREIGN KEY(IDPlayList) REFERENCES tbl_PlayList(ID)
+);
+
+CREATE TABLE tbl_CusPlayList (
+	ID varchar(20),
+    Name varchar(1500) UNIQUE,
+    QuantityFavorite double,
+    IDCustomer int,
+    CONSTRAINT PK_CusPlayList PRIMARY KEY(ID),
+    CONSTRAINT FK_CPL_Customer FOREIGN KEY(IDCustomer) REFERENCES tbl_Customer(ID)
+);
+
+CREATE TABLE tbl_SongOfCusPlayList (
+	IDSong varchar(20),
+    IDCusPlayList varchar(20),
+    CONSTRAINT PK_SongOfCusPlayList PRIMARY KEY(IDSong, IDCusPlayList),
+    CONSTRAINT FK_SOCPL_Song FOREIGN KEY(IDSong) REFERENCES tbl_Song(ID),
+    CONSTRAINT FK_SOCPL_CusPlayList FOREIGN KEY(IDCusPlayList) REFERENCES tbl_CusPlayList(ID)
+);
+
+
+

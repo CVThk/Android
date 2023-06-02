@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="name">
+        <item>Ngô Văn Sơn</item>
+        <item>Ngô Văn Thuận</item>
+        <item>Ngô Văn Tân</item>
+    </string-array>
+</resources>

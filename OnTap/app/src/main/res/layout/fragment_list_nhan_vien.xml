@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.ListNhanVienFragment">
+
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:background="#426743"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_weight=".9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Danh sách nhân viên" />
+            <ImageButton
+                android:id="@+id/btn_remove_nhan_vien"
+                android:layout_weight=".1"
+                android:src="@drawable/baseline_delete_forever_24"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_list_nhan_vien"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

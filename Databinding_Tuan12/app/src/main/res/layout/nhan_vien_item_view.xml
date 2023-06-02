@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="m"
+            type="com.example.databinding_tuan12.modelview.NhanVienItemModelView" />
+    </data>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:weightSum="1"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            app:imageResource="@{m.imageGender}"
+            android:layout_weight=".03"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <TextView
+            android:text="@{m.title}"
+            android:layout_weight=".9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <CheckBox
+            android:checked="@={m.check}"
+            android:layout_weight=".07"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>

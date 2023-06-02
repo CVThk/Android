@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.example.ontap.NhanVien" />
+        <variable
+            name="m"
+            type="com.example.ontap.viewmodel.FormNhapNhanVienViewModel" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.FormNhanVienFragment">
+
+        <TextView
+            android:background="#426743"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quản lý nhân viên" />
+
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="0.3"
+                android:text="Mã NV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:text="@={m.nhanVien.ma}"
+                android:layout_weight="0.7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="0.3"
+                android:text="Tên NVd32"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:text="@={m.nhanVien.ten}"
+                android:layout_weight="0.7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_weight=".3"
+                android:text="Giới tính"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <RadioGroup
+                android:layout_weight=".7"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:checked="@{m.nhanVien.gender == NhanVien.GENDER_FEMALE}"
+                    android:onClick="@{() -> m.setGender(NhanVien.GENDER_FEMALE)}"
+                    android:text="Nữ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:checked="@{m.nhanVien.gender == NhanVien.GENDER_MALE}"
+                    android:onClick="@{() -> m.setGender(NhanVien.GENDER_MALE)}"
+                    android:text="Nam"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Space
+                android:layout_gravity="center"
+                android:layout_weight=".3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_nhap_nhan_vien"
+                android:layout_weight=".7"
+                android:text="Nhập NV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/baseline_mark_email_read_24" android:id="@+id/menu_mail" android:title="Email"/>
+    <item android:title="group 1">
+        <menu>
+            <item android:id="@+id/menu_qr" android:title="QR" android:icon="@drawable/baseline_qr_code_scanner_24"/>
+        </menu>
+    </item>
+</menu>

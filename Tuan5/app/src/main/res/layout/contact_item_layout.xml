@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    tools:context="ListView.CustomAdapter">
+
+    <ImageView
+        android:src="@drawable/baseline_supervised_user_circle_24"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="16dp"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/contactItem_name"
+            android:textSize="20sp"
+            android:textFontWeight="800"
+            android:text="Test name"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="5px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/contactItem_phone"
+            android:text="Test phone"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:textFontWeight="600"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

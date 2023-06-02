@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateTopicActivity">
+
+    <LinearLayout
+        android:padding="30dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <TextView
+            android:text="CHỈNH SỬA CHỦ ĐỀ"
+            android:textSize="30sp"
+            android:layout_marginBottom="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+            <EditText
+                android:id="@+id/updateTopic_editText_name"
+                android:inputType="text"
+                android:hint="Tên chủ đề"
+                android:background="@drawable/border_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:weightSum="1"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/updateTopic_imageView_pick"
+                    android:layout_weight=".7"
+                    android:maxHeight="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"/>
+                <Button
+                    android:id="@+id/updateTopic_btn_pickImage"
+                    android:layout_weight=".3"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Select image"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#5E5A59"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/updateTopic_btn_cancle"
+                    android:layout_weight=".9"
+                    android:text="Huỷ"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/error"
+                    android:layout_marginTop="30dp"
+                    android:minHeight="80dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Space
+                    android:layout_weight=".2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/updateTopic_btn_update"
+                    android:layout_weight=".9"
+                    android:text="Cập nhật"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/success"
+                    android:layout_marginTop="30dp"
+                    android:minHeight="80dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
