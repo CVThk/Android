@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kt_test.databinding.ItemBinding;
 
+import java.util.ArrayList;
+
 public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
+
+    ArrayList<Poke> items = new ArrayList<>();
 
     @NonNull
     @Override

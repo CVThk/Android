@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,9 +30,19 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteDatabase sql = openDB();
 
+        String sqlQuery = "select * from tblPhonebook where name like '%fj%'";
+        Cursor csr = sql.rawQuery(sqlQuery, null);
+        if (csr != null) {
+            while (csr.moveToNext()) {
+                System.out.println("ID: " + csr.getInt(0));
+                System.out.println("Name: " + csr.getString(1));
+                System.out.println("Phone: " + csr.getString(2));
+            }
+        }
+
         sql.close();
-        createPhoneTable();
-        insert("T", "0909090909");
+//        createPhoneTable();
+//        insert("alllTfjfjfkf", "0909090909");
     }
     private String dbName = "phonebook.db";
     private SQLiteDatabase openDB() {
